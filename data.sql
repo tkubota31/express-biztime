@@ -6,6 +6,7 @@ CREATE DATABASE biztime;
 
 DROP TABLE IF EXISTS invoices;
 DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS industries;
 
 CREATE TABLE companies (
     code text PRIMARY KEY,
@@ -22,6 +23,17 @@ CREATE TABLE invoices (
     paid_date date,
     CONSTRAINT invoices_amt_check CHECK ((amt > (0)::double precision))
 );
+
+CREATE TABLE industries(
+  code text PRIMARY KEY,
+  industry test NOT NULL UNIQUE
+);
+
+CREATE TABLE connection(
+  id SERIAL PRIMARY KEY,
+  comp_code INTEGER REFERENCES companies (code),
+  industry_code INTEGER REFERENCES industries (code)
+)
 
 INSERT INTO companies
   VALUES ('apple', 'Apple Computer', 'Maker of OSX.'),
