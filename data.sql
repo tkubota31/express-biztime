@@ -7,6 +7,7 @@ CREATE DATABASE biztime;
 DROP TABLE IF EXISTS invoices;
 DROP TABLE IF EXISTS companies;
 DROP TABLE IF EXISTS industries;
+DROP TABLE IF EXISTS connections;
 
 CREATE TABLE companies (
     code text PRIMARY KEY,
